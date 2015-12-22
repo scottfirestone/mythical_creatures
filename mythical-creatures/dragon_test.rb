@@ -5,6 +5,7 @@ require_relative 'dragon'
 
 class DragonTest < Minitest::Test
   def test_it_has_a_name
+    skip
     dragon = Dragon.new("Ramoth", :gold, "Lessa")
     assert_equal "Ramoth", dragon.name
   end
@@ -57,4 +58,3 @@ class DragonTest < Minitest::Test
     refute dragon.hungry?
   end
 end
-

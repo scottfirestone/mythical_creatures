@@ -5,6 +5,7 @@ require_relative 'centaur'
 
 class CentaurTest < Minitest::Test
   def test_it_has_a_name
+    skip
     centaur = Centaur.new("George","Palomino")
     assert_equal "George", centaur.name
   end
@@ -135,17 +136,35 @@ class CentaurTest < Minitest::Test
 
   def test_becomes_rested_after_drinking_a_potion
     skip
-    # your code here
+    centaur = Centaur.new("richard", "horse")
+    centaur.shoot
+    centaur.run
+    centaur.run
+    assert centaur.cranky?
+    centaur.drink_potion
+    refute centaur.cranky?
   end
 
   def test_can_only_drink_potion_while_standing
     skip
-    # your code here
+    centaur = Centaur.new("richard", "horse")
+    centaur.lay_down
+    assert_equal "I can't do that!", centaur.drink_potion
+    centaur.stand_up
+    centaur.shoot
+    assert_equal 1, centaur.cranky
+    centaur.drink_potion
+    assert_equal 0, centaur.cranky
   end
 
   def test_gets_sick_if_drinks_potion_while_rested
-    skip
-    # your code here
+    # skip
+    centaur = Centaur.new("richard", "horse")
+    centaur.drink_potion
+    refute centaur.sick?
+    centaur.lay_down
+    centaur.drink_potion
+    assert centaur.sick?
   end
 
 end

@@ -5,6 +5,7 @@ require_relative 'medusa'
 
 class MedusaTest < Minitest::Test
   def test_it_has_a_name
+    skip
     medusa = Medusa.new("Cassiopeia")
     assert_equal "Cassiopeia", medusa.name
   end
@@ -51,23 +52,53 @@ class MedusaTest < Minitest::Test
 
   def test_can_only_have_three_victims
     skip
-    # your code here
+    medusa = Medusa.new("Cassiopeia")
+    victim1 = Person.new("guy1")
+    victim2 = Person.new("guy2")
+    victim3 = Person.new("guy3")
+    victim4 = Person.new("guy4")
+    medusa.stare(victim1)
+    medusa.stare(victim2)
+    medusa.stare(victim3)
+    medusa.stare(victim4)
+    assert_equal 3, medusa.statues.size
   end
 
   def test_if_a_fourth_victim_is_stoned_first_is_unstoned
     skip
-    # your code here
+    medusa = Medusa.new("Cassiopeia")
+    victim1 = Person.new("guy1")
+    victim2 = Person.new("guy2")
+    victim3 = Person.new("guy3")
+    victim4 = Person.new("guy4")
+    medusa.stare(victim1)
+    medusa.stare(victim2)
+    medusa.stare(victim3)
+    medusa.stare(victim4)
+    refute victim1.stoned?
   end
 
   def test_is_alive_by_default
     skip
-    # your code here
+    medusa = Medusa.new("Cassiopeia")
+    assert medusa.alive
   end
 
   def test_is_not_alive_after_five_victims
-    skip
-    # your code here
+    # skip
+    medusa = Medusa.new("Cassiopeia")
+    victim1 = Person.new("guy1")
+    victim2 = Person.new("guy2")
+    victim3 = Person.new("guy3")
+    victim4 = Person.new("guy4")
+    victim5 = Person.new("guy5")
+    medusa.stare(victim1)
+    medusa.stare(victim2)
+    medusa.stare(victim3)
+    medusa.stare(victim4)
+    assert medusa.alive
+    medusa.stare(victim5)
+    refute medusa.alive
   end
-
 
 end

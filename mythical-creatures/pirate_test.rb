@@ -5,6 +5,7 @@ require_relative 'pirate'
 
 class PirateTest < Minitest::Test
   def test_has_name
+    skip
     pirate = Pirate.new("Jack")
     assert_equal "Jack", pirate.name
   end
@@ -47,21 +48,27 @@ class PirateTest < Minitest::Test
 
   def test_a_pirate_can_rob_ships
     skip
-    # create a pirate
+    pirate = Pirate.new("scott")
     # check that a pirate has a rob_ship method
+    assert pirate.rob_ship
   end
 
   def test_a_pirate_has_booty
     skip
     # create a pirate
+    pirate = Pirate.new("scott")
     # pirate starts with 0 booty
+    assert_equal 0, pirate.booty
   end
 
   def test_a_pirate_gets_100_booty_for_robbon
     skip
     # create a pirate
+    pirate = Pirate.new("Scott")
     # pirate robs ship
+    pirate.rob_ship
     # check pirate has 100 booty
+    assert_equal 100, pirate.booty
   end
 
 end

@@ -5,6 +5,7 @@ require_relative 'vampire'
 
 class VampireTest < Minitest::Test
   def test_it_has_a_name
+    skip
     vampire = Vampire.new("Dracula")
     assert_equal "Dracula", vampire.name
   end

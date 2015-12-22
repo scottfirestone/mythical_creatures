@@ -5,6 +5,7 @@ require_relative 'wizard'
 
 class WizardTest < Minitest::Test
   def test_has_name
+    skip
     wizard = Wizard.new("Eric")
     assert_equal "Eric", wizard.name
   end
@@ -16,19 +17,19 @@ class WizardTest < Minitest::Test
   end
 
   def test_is_bearded_by_default
-    skip
+    # skip
     wizard = Wizard.new("Ben")
     assert wizard.bearded?
   end
 
   def test_is_not_always_bearded
-    skip
+    # skip
     wizard = Wizard.new("Valerie", bearded: false)
     refute wizard.bearded?
   end
 
   def test_has_root_powers
-    skip
+    # skip
     wizard = Wizard.new("Sarah", bearded: false)
     assert_equal "sudo chown ~/bin", wizard.incantation("chown ~/bin")
   end
@@ -40,25 +41,35 @@ class WizardTest < Minitest::Test
   end
 
   def test_starts_rested
-    skip
+    # skip
     # create wizard
+    wizard = Wizard.new("Scott")
     # .rested? returns true
+    assert wizard.rested?
   end
 
   def test_can_cast_spells
-    skip
+    # skip
     # create wizard
+    wizard = Wizard.new("scott")
     # .cast returns "MAGIC MISSILE!"
+    assert_equal "MAGIC MISSILE!", wizard.cast
   end
 
   def test_gets_tired_after_casting_three_spells
-    skip
+
     # create wizard
+    wizard = Wizard.new("scott")
     # casts spell twice
+    2.times do
+      wizard.cast
+    end
     # check wizard is rested
+    assert wizard.rested?
     # casts spell
+    wizard.cast
     # check wizard is not rested
+    refute wizard.rested?
   end
 
 end
-

@@ -6,6 +6,7 @@ require_relative 'unicorn'
 class UnicornTest < Minitest::Test
 
   def test_it_has_a_name
+    skip
     unicorn = Unicorn.new("Robert")
     assert_equal "Robert", unicorn.name
   end

@@ -5,6 +5,7 @@ require_relative 'hobbit'
 
 class HobbitTest < Minitest::Test
   def test_it_has_a_name
+    skip
     hobbit = Hobbit.new("Bilbo")
     assert_equal "Bilbo", hobbit.name
   end
@@ -61,24 +62,29 @@ class HobbitTest < Minitest::Test
 
   def test_is_old_at_age_of_101
     skip
-    # create a hobbit
-    # have hobbit age 101 years
-    # check that hobbit.old? returns true
+    hobbit = Hobbit.new("Scott")
+    101.times do
+      hobbit.celebrate_birthday
+    end
+    assert hobbit.old?
   end
 
   def test_hobbit_has_the_ring_if_its_name_is_frodo
     skip
-    # create a hobbit named Frodo
-    # create a second hobbit named Sam
+    hobbit = Hobbit.new("Frodo")
+    hobbit2 = Hobbit.new("Sam")
     # check that .has_ring? for Frodo returns true
+    assert hobbit.has_ring?
+    refute hobbit2.has_ring?
     # check that .has_ring? for Sam returns false
   end
 
   def test_hobbits_are_short
     skip
     # create a hobbit
+    hobbit = Hobbit.new("scott")
     # check that .is_short? returns true
+    assert hobbit.is_short?
   end
 
 end
-
